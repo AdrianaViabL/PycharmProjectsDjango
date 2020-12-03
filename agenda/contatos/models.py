@@ -22,6 +22,8 @@ class Contato(models.Model):
     descricao = models.TextField(blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     mostrar = models.BooleanField(default=True)
+    fotos = models.ImageField(blank=True,
+                              upload_to='fotos/%Y/%m/%d')  # para cada imagem em dias diferentes a seu upada uma pasta nova com o dia do upload sera criada
 
     def __str__(self):
         return self.nome
