@@ -15,10 +15,30 @@ python3.7 -m pip install pipenv --user
 
 # Criar pasta
 mkdir agenda
-# Entrar na pasta
+# Entrar na pasta do projeto
 cd agenda
 
 # Criando o ambiente virtual
 python3.7 -m venv venv
 source venv/bin/activate
+
+# estando dentro do ambiente virtual que acabou de ser criado
+
 python3.7 -m pip install django gunicorn pillow
+
+# para sair da vm -> deactivate
+
+
+# transferindo as pastas do local para o projeto na cloud
+# depois de criar a pasta principal dentro do servidor
+
+ssh nomemaquina@ipServidor
+mv venv/ <-criando a pasta da vm(se ja estiver com nome venv cria com outro nome
+# SAIA DA MAQUINA VIRTUAL
+
+# entre na pasta local do seu projeto (usando cd home/...)
+# dentro da pasta do projeto digite
+sftp nomemaquina@ipServidor
+# dentro da vm pelo sftp digite 
+put -R nomepastaprojetolocal/*  agenda <-- para copiar os dados do projeto para a vm
+
