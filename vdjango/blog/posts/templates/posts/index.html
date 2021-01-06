@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block conteudo %}
+    <div class="card-columns mt-4">
+        {% for post in posts %}
+             <!-- FOR LOOP -->
+             <div class="card">
+                 {% if post.imagem_post %}
+                      <a href="{% url 'post_detalhes' post.id %}">
+                          <img class="card-img-top"
+                               src="{{ post.imagem_post.url }}"
+                               alt="{{ post.titulo_post }}" style="max-height:200px;">
+                      </a>
+                 {% endif %}
+
+                  <div class="card-body">
+                       <h5 class="card-title">
+                            <a href="{% url 'post_detalhes' post.id %}">
+                                {{ post.titulo_post }}
+                            </a>
+                       </h5>
+                       <p class="card-text">{{ post.excerto_post }}</p>
+                       <p class="card-text">
+                           <small class="text-muted">
+                               {{ post.data_post|naturalday|title }}
+                               | {{ post.num_comentarios }} comentario(s)
+                               | {{ post.categoria_post }}</small>
+                       </p>
+
+                      <div class="text-right">
+                          <a href="post.html" class="btn btn-outline-secondary">Ler mais...</a>
+                      </div>
+                  </div>
+             </div>
+        {% endfor %}
+    </div>
+    {% include 'parciais/_pagination.html' %}
+{% endblock %}
