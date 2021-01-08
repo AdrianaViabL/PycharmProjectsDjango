@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %} <!--funciona depois de instalar o crispy-forms-->
 {% block titulo %}{{ post.titulo_post|title }} |{% endblock %}
 
 {% block conteudo %}
-<div class="container">
-
     <div class="row pt-5">
         <div class="col-xl"></div>
         <div class="col-xl-8 text-center">
@@ -54,22 +52,21 @@
 
             <form method="POST" action="#envia_comentario">
                 {% csrf_token %}
-                <table class="table">
-                    {{ form }}
-                    <tr>
-                        <td colspan="2">
-                            {% include 'parciais/_messages.html' %}
-                            <input id="envia_comentario" type="submit" class="btn btn-primary"
+                {% for hidden_field in form.hidden_fields %}
+                    {{hidden_field}}
+                {% endfor %}
+
+                {% for visible_field in form.visible_fields %}
+                        {{ visible_field|as_crispy_field }}
+                {% endfor %}
+
+                {% include 'parciais/_messages.html' %}
+                <input id="envia_comentario" type="submit" class="btn btn-primary"
                                 value="Enviar">
-                        </td>
-                    </tr>
-                </table>
             </form>
 
 
         </div>
         <div class="col-xl"></div>
     </div>
-</div>
-
 {% endblock %}

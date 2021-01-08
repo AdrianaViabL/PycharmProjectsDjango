@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'crispy_forms',  # pip install django-crispy-forms <-- instalação
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'blog.urls'
 
@@ -134,3 +134,4 @@ MESSAGE_TAGS = {
     constants.INFO: 'alert-info',
 }
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
